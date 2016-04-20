@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.amankumar.layouttest" >
+
+    <uses-permission android:name="ANDROID.PERMISSION.INTERNET" />
+
+    <application
+        android:name=".Application.LucidMeApp"
+        android:allowBackup="true"
+        android:icon="@drawable/app"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Account.LogInActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Account.GuestSignUpActivity"
+            android:label="@string/title_activity_guest_sign_up"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".UI.GUEST.GuestActivity"
+            android:label="@string/title_activity_guest" >
+        </activity>
+        <activity
+            android:name=".UI.HOST.HostActivity"
+            android:label="@string/title_activity_host" >
+        </activity>
+        <activity
+            android:name=".UI.GUEST.GuestSearchActivity"
+            android:label="@string/title_activity_guest_search" >
+        </activity>
+        <activity
+            android:name=".Account.HostSignUpActivity"
+            android:label="@string/title_activity_host_sign_up" >
+        </activity>
+        <activity
+            android:name=".UI.HOST.HostFacilityActivity"
+            android:label="@string/title_activity_host_facility" >
+        </activity>
+        <activity
+            android:name=".UI.GUEST.SelectedHostActivity"
+            android:label="@string/title_activity_selected_host" >
+        </activity>
+        <activity
+            android:name=".UI.GUEST.BookmarkActivity"
+            android:label="@string/title_activity_bookmark" >
+        </activity>
+        <activity
+            android:name=".UI.ChatActivity"
+            android:label="@string/title_activity_chat" >
+        </activity>
+        <activity
+            android:name=".UI.ChatDetailActivity"
+            android:label="@string/title_activity_chat_detail" >
+        </activity>
+        <activity
+            android:name=".UI.GUEST.GuestMain"
+            android:label="@string/title_activity_guest_main" >
+        </activity>
+    </application>
+
+</manifest>

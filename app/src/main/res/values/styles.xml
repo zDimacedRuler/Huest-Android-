@@ -1,0 +1,80 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/primaryColorDark</item>
+    </style>
+
+    <style name="SelectedHostDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/light_black</item>
+    </style>
+
+    <style name="HintText">
+        <item name="android:textSize">0dp</item>
+    </style>
+
+    <style name="MyTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+    </style>
+
+    <style name="MyButtonStyle">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/oval_ripple</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="MyButtonPrimary">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:background">@drawable/oval_primary_ripple</item>
+    </style>
+
+    <style name="ListItemText">
+        <item name="android:textColor">@color/light_black</item>
+        <item name="android:textSize">@dimen/list_item_text_size</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="SelectedHostTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textColor">@color/light_black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="SelectedHostTextSecondaryStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15.3sp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+    </style>
+</resources>

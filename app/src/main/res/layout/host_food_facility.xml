@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/foodType_group_Host"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="100"
+            android:background="@color/colorBackground"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/veg_HostRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:checked="true"
+                android:padding="10dp"
+                android:text="Only Veg"
+                android:textSize="15.3sp" />
+
+            <RadioButton
+                android:id="@+id/Non_veg_GuestRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:padding="10dp"
+                android:text="Non_Veg"
+                android:textSize="15.3sp" />
+        </RadioGroup>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/host_foodLimitEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Limits"
+                android:inputType="number"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="15.3sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/host_foodDescEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description of food"
+                android:inputType="textAutoComplete|textMultiLine"
+                android:padding="10dp"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="15.3sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/host_dayEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Per day rate"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="15.3sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/host_weekEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Per week rate"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="15.3sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/host_monthEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:hint="Per month rate"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="15.3sp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+</LinearLayout>

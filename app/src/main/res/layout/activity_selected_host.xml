@@ -1,0 +1,327 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.amankumar.layouttest.UI.GUEST.SelectedHostActivity">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/appbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearHostDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/colorBackground"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Name" />
+
+                    <TextView
+                        android:id="@+id/SH_name"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="City" />
+
+                    <TextView
+                        android:id="@+id/SH_city"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Mobile" />
+
+                    <TextView
+                        android:id="@+id/SH_mobile"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/SH_food"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/colorBackground"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    style="@style/SelectedHostTextStyle"
+                    android:text="FOOD"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="20sp" />
+
+                <View
+                    style="@style/SelectedHostDivider"
+                    android:layout_margin="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Food Type" />
+
+                    <TextView
+                        android:id="@+id/SH_foodType"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Description" />
+
+                    <TextView
+                        android:id="@+id/SH_foodDesc"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Rate/day" />
+
+                    <TextView
+                        android:id="@+id/SH_dayRate"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Rate/week" />
+
+                    <TextView
+                        android:id="@+id/SH_weekRate"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Rate/month" />
+
+                    <TextView
+                        android:id="@+id/SH_monthRate"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/SH_accommodation"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/colorBackground"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    style="@style/SelectedHostTextStyle"
+                    android:text="ACCOMMODATION"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="20sp" />
+
+                <View
+                    style="@style/SelectedHostDivider"
+                    android:layout_margin="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Vacancy" />
+
+                    <TextView
+                        android:id="@+id/SH_vacancy"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Description" />
+
+                    <TextView
+                        android:id="@+id/SH_accoDesc"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Single Room Rate" />
+
+                    <TextView
+                        android:id="@+id/SH_singleRate"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="Sharing Rate" />
+
+                    <TextView
+                        android:id="@+id/SH_sharingRate"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        style="@style/SelectedHostTextStyle"
+                        android:layout_weight="50"
+                        android:text="7 day trial" />
+
+                    <TextView
+                        android:id="@+id/SH_trialRate"
+                        style="@style/SelectedHostTextSecondaryStyle"
+                        android:layout_weight="50" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/AddChatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:onClick="chatButtonHandler"
+        android:src="@drawable/fab_plus"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp" />
+</RelativeLayout>

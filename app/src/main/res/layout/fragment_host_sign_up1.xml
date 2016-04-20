@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    tools:context="com.example.amankumar.layouttest.HostSignUp.HostSignUp1">
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:text="REGISTER"
+                android:textColor="@color/colorBackground"
+                android:textSize="40sp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                app:hintTextAppearance="@style/HintText">
+
+                <EditText
+                    android:id="@+id/email_HostEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
+                    android:hint="Enter Email"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/password_HostEditText"
+                    android:padding="14dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:hintTextAppearance="@style/HintText">
+
+                <EditText
+                    android:id="@+id/password_HostEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:nextFocusDown="@+id/firstName_HostEditText"
+                    android:padding="14dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:hintTextAppearance="@style/HintText">
+
+                <EditText
+                    android:id="@+id/firstName_HostEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
+                    android:hint="FirstName"
+                    android:inputType="text"
+                    android:nextFocusDown="@+id/lastName_HostEditText"
+                    android:padding="14dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:hintTextAppearance="@style/HintText">
+
+                <EditText
+                    android:id="@+id/lastName_HostEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
+                    android:hint="LastName"
+                    android:inputType="text"
+                    android:nextFocusDown="@+id/hostSignUp1NextButton"
+                    android:padding="14dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/hostSignUp1NextButton"
+                style="@style/MyButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="NEXT" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

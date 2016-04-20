@@ -1,0 +1,135 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    tools:context="com.example.amankumar.layouttest.GuestSignUp.GuestSignUp2">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="PROFILE"
+                android:textColor="@color/colorBackground"
+                android:textSize="40sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:hintTextAppearance="@style/HintText">
+
+                <EditText
+                    android:id="@+id/firstName_GuestEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
+                    android:hint="First Name"
+                    android:inputType="text"
+                    android:nextFocusDown="@+id/lastName_GuestEditText"
+                    android:padding="14dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:hintTextAppearance="@style/HintText">
+
+                <EditText
+                    android:id="@+id/lastName_GuestEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
+                    android:hint="Last Name"
+                    android:inputType="text"
+                    android:nextFocusDown="@+id/mobile_GuestEditText"
+                    android:padding="14dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:hintTextAppearance="@style/HintText">
+
+                <EditText
+                    android:id="@+id/mobile_GuestEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackground"
+                    android:hint="Enter Mobile Number"
+                    android:inputType="number"
+                    android:padding="14dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/gender_group_Guest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_weight="100"
+                android:background="@color/colorBackground"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/male_GuestRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:padding="14dp"
+                    android:checked="true"
+                    android:text="Male"
+                    android:textSize="15.3sp" />
+
+                <RadioButton
+                    android:id="@+id/female_GuestRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:padding="14dp"
+                    android:text="Female"
+                    android:textSize="15.3sp" />
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/OccupationSpinner_Guest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorBackground"
+                android:padding="14dp" />
+
+            <Button
+                android:id="@+id/guestSignUp2NextButton"
+                style="@style/MyButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="NEXT" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <CheckBox
+                android:id="@+id/host_single_accommodation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:padding="10dp"
+                android:layout_gravity="bottom"
+                android:text="Single"
+                android:textSize="15.3sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_weight="50"
+                android:layout_gravity="top"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/host_single_accommodationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Rate"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp"
+                    android:visibility="gone"
+                     />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorBackground"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <CheckBox
+                android:id="@+id/host_sharing_accommodation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:padding="10dp"
+                android:layout_gravity="bottom"
+                android:text="Sharing"
+                android:textSize="15.3sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_weight="50"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/host_sharing_accommodationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rate"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp"
+                    android:visibility="gone" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorBackground"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <CheckBox
+                android:id="@+id/host_trial_accommodation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:padding="10dp"
+                android:layout_gravity="bottom"
+                android:text="7 day Trial"
+                android:textSize="15.3sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_weight="50"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/host_trial_accommodationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rate"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp"
+                     android:visibility="gone"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/host_accolimitEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Limit"
+                android:inputType="number"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="15.3sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/host_accoDescEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description of place"
+                android:inputType="textAutoComplete|textMultiLine"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="15.3sp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+</LinearLayout>
