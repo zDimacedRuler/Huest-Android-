@@ -53,6 +53,8 @@ public class ChatDetailActivity extends AppCompatActivity {
         listId = getIntent().getStringExtra("listId");
         name = getIntent().getStringExtra("name");
         getSupportActionBar().setTitle(name);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         chatDetailLV = (ListView) findViewById(R.id.CD_list_view);
         userRef = new Firebase(Constants.FIREBASE_URL).child(userType).child(encodedEmail);
         chatMessageEdit = (EditText) findViewById(R.id.chatMessage_editText);

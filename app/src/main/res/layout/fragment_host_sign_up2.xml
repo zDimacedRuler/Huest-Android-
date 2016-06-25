@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorBackground"
                     android:hint="Enter Address"
-                    android:inputType="text"
+                    android:inputType="text|textCapSentences"
                     android:nextFocusDown="@+id/pinCode_HostEditText"
                     android:padding="14dp"
                     android:singleLine="false"
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorBackground"
                     android:hint="Enter City"
-                    android:inputType="text"
+                    android:inputType="text|textCapSentences"
                     android:nextFocusDown="@+id/state_HostEditText"
                     android:padding="14dp"
                     android:singleLine="true"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorBackground"
                     android:hint="Enter State"
-                    android:inputType="text"
+                    android:inputType="text|textCapSentences"
                     android:nextFocusDown="@+id/mobile_HostEditText"
                     android:padding="14dp"
                     android:singleLine="true"
@@ -134,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="NEXT" />
+                android:text="Register" />
         </LinearLayout>
     </ScrollView>
 

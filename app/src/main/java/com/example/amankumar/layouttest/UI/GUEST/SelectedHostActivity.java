@@ -49,6 +49,8 @@ public class SelectedHostActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Host");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         init();
         bookmarkCheck();
         hostRef.addValueEventListener(new ValueEventListener() {

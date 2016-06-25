@@ -47,7 +47,6 @@ public class HostSignUpActivity extends AppCompatActivity implements HostSignUp1
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        Toast.makeText(this, "Values:" + email + firstName, Toast.LENGTH_SHORT).show();
         HostSignUp2 frag = HostSignUp2.newInstance();
         FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
@@ -62,7 +61,6 @@ public class HostSignUpActivity extends AppCompatActivity implements HostSignUp1
         this.pinCode = pinCode;
         this.city = city.toLowerCase();
         this.mobile = mobile;
-        Toast.makeText(this, "Values:" + state + pinCode, Toast.LENGTH_SHORT).show();
         registerHost();
     }
 

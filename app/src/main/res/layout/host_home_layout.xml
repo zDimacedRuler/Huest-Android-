@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.amankumar.layouttest.Util.ThreeTwoImageView
+            android:id="@+id/hostImageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/download"
+            android:scaleType="centerCrop"
+            />
+
+        <com.example.amankumar.layouttest.Util.ThreeTwoImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/scrim" />
+
+        <TextView
+            android:id="@+id/host_userNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/colorBackground"
+            android:textSize="30sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frame"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorBackground"
+            android:gravity="left"
+            android:onClick="manageFacilityHandler"
+            android:padding="14dp"
+            android:text="Manage Facility" />
+    </LinearLayout>
+</RelativeLayout>

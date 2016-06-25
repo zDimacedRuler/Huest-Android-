@@ -63,16 +63,16 @@ public class HostSignUp2 extends Fragment {
         return view;
     }
     private boolean isValidCity(String city) {
-        if (city.equals("")) {
-            cityEdit.setError("Cannot be empty");
+        if (!city.matches( "([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+)" )) {
+            cityEdit.setError("Invalid City");
             return false;
         }
         return true;
     }
 
     private boolean isValidState(String state) {
-        if (state.equals("")) {
-            stateEdit.setError("Cannot be empty");
+        if (!state.matches("([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+)" )) {
+            stateEdit.setError("Invalid State");
             return false;
         }
         return true;
@@ -80,7 +80,7 @@ public class HostSignUp2 extends Fragment {
 
     private boolean isValidAddress(String address) {
         if (address.equals("")) {
-            addressEdit.setError("Cannot be empty");
+            addressEdit.setError("Invalid Address");
             return false;
         }
         return true;
@@ -88,15 +88,15 @@ public class HostSignUp2 extends Fragment {
     }
 
     private boolean isValidPinCode(String pinCode) {
-        if (pinCode.equals("")||pinCode.length()<6) {
-            pinCodeEdit.setError("Cannot be empty");
+        if (!pinCode.matches("\\d{6}")) {
+            pinCodeEdit.setError("Invalid PinCode");
             return false;
         }
         return true;
     }
     private boolean isValidMobile(String mobile) {
-        if (mobile.equals("")||mobile.length()<10) {
-            mobileEdit.setError("Cannot be empty");
+        if (!mobile.matches("^(\\+\\d{1,3}[- ]?)?\\d{10}$")) {
+            mobileEdit.setError("Incorrect Mobile Number");
             return false;
         }
         return true;

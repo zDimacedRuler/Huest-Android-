@@ -24,12 +24,13 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 public class ChatActivity extends AppCompatActivity {
-    String userType, encodedEmail,listId;
+    String userType, encodedEmail, listId;
     SharedPreferences sp;
     Toolbar toolbar;
     ListView listView;
     Firebase chatRef, userRef;
     ChatListAdapter chatListAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(Constants.LOCATION_CHAT).exists()) {
                     chatRef = new Firebase(Constants.FIREBASE_URL).child(userType).child(encodedEmail).child(Constants.LOCATION_CHAT);
-                    chatListAdapter=new ChatListAdapter(ChatActivity.this, ChatListModel.class,R.layout.list_view,chatRef);
+                    chatListAdapter = new ChatListAdapter(ChatActivity.this, ChatListModel.class, R.layout.list_view, chatRef);
                     listView.setAdapter(chatListAdapter);
                 }
             }
@@ -85,10 +86,10 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listId = chatListAdapter.getRef(position).getKey();
-                ChatListModel chatListModel=chatListAdapter.getItem(position);
-                Intent intent=new Intent(ChatActivity.this,ChatDetailActivity.class);
-                intent.putExtra("listId",listId);
-                intent.putExtra("name",chatListModel.getUsername());
+                ChatListModel chatListModel = chatListAdapter.getItem(position);
+                Intent intent = new Intent(ChatActivity.this, ChatDetailActivity.class);
+                intent.putExtra("listId", listId);
+                intent.putExtra("name", chatListModel.getUsername());
                 startActivity(intent);
             }
         });

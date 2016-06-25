@@ -16,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/appBar"
-
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll"
         android:layout_marginBottom="50dp" />
@@ -40,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorBackground"
                 android:hint="Enter Message"
-                android:inputType="textAutoCorrect|textMultiLine"
+                android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
                 android:padding="14dp"
                 android:lines="1"
                 android:overScrollMode="always"

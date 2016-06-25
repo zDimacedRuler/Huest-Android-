@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.amankumar.layouttest.R;
-import com.example.amankumar.layouttest.UI.GUEST.GuestActivity;
+import com.example.amankumar.layouttest.UI.GUEST.GuestMain;
 import com.example.amankumar.layouttest.UI.HOST.HostActivity;
 import com.example.amankumar.layouttest.Util.Constants;
 import com.example.amankumar.layouttest.Util.Util;
@@ -149,10 +149,11 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void takeUserToGuestActivity() {
-        Intent intent = new Intent(this, GuestActivity.class);
+        Intent intent = new Intent(this, GuestMain.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
+        overridePendingTransition(0,0);
     }
 
     private void takeUserToHostActivity() {
@@ -160,6 +161,7 @@ public class LogInActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
+        overridePendingTransition(0,0);
     }
 
     private void showErrorToast(String s) {

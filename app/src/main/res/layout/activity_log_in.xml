@@ -6,7 +6,7 @@
     android:background="@color/primaryColor"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".MainActivity">
+    tools:context=".Account.LogInActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:gravity="center"
-                android:text="Huest"
+                android:text="HUESTIN"
                 android:textColor="@color/colorBackground"
                 android:textSize="40sp" />
 

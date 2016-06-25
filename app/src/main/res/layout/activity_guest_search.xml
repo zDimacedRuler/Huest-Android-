@@ -22,7 +22,7 @@
 
         <EditText
             android:id="@+id/GS_searchEdit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_weight="90"
             android:background="@color/colorBackground"
@@ -37,9 +37,9 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_weight="10"
+            android:onClick="filterButtonHandler"
             android:background="@color/primaryColor"
-            android:src="@drawable/ic_filter_list_white_36dp"
-            android:visibility="gone" />
+            android:src="@drawable/ic_filter_list_white_24dp"/>
     </LinearLayout>
 
     <RelativeLayout

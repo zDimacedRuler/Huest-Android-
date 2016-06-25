@@ -26,16 +26,14 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".UI.GUEST.GuestActivity"
-            android:label="@string/title_activity_guest" >
-        </activity>
-        <activity
             android:name=".UI.HOST.HostActivity"
             android:label="@string/title_activity_host" >
         </activity>
         <activity
             android:name=".UI.GUEST.GuestSearchActivity"
-            android:label="@string/title_activity_guest_search" >
+            android:launchMode="singleTop"
+            android:label="@string/title_activity_guest_search"
+            android:parentActivityName=".UI.GUEST.GuestMain">
         </activity>
         <activity
             android:name=".Account.HostSignUpActivity"
@@ -47,23 +45,24 @@
         </activity>
         <activity
             android:name=".UI.GUEST.SelectedHostActivity"
-            android:label="@string/title_activity_selected_host" >
-        </activity>
-        <activity
-            android:name=".UI.GUEST.BookmarkActivity"
-            android:label="@string/title_activity_bookmark" >
+            android:label="@string/title_activity_selected_host"
+            android:parentActivityName=".UI.GUEST.GuestSearchActivity">
         </activity>
         <activity
             android:name=".UI.ChatActivity"
-            android:label="@string/title_activity_chat" >
+            android:label="@string/title_activity_chat"
+            android:launchMode="singleTop"
+            >
         </activity>
         <activity
             android:name=".UI.ChatDetailActivity"
-            android:label="@string/title_activity_chat_detail" >
+            android:label="@string/title_activity_chat_detail"
+            android:parentActivityName=".UI.ChatActivity">
         </activity>
         <activity
             android:name=".UI.GUEST.GuestMain"
-            android:label="@string/title_activity_guest_main" >
+            android:label="@string/title_activity_guest_main"
+            android:launchMode="singleTop">
         </activity>
     </application>
 

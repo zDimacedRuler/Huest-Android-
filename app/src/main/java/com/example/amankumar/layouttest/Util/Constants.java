@@ -50,5 +50,6 @@ public class Constants {
 
     public static final String TO="_to_";
 
+    public static final String RECENT_CITIES="recentCities";
 
 }

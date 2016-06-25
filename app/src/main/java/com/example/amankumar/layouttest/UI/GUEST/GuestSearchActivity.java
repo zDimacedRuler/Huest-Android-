@@ -1,7 +1,9 @@
 package com.example.amankumar.layouttest.UI.GUEST;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.amankumar.layouttest.Adapter.ActiveHostAccommodationAdapter;
 import com.example.amankumar.layouttest.Adapter.ActiveHostFoodAdapter;
+import com.example.amankumar.layouttest.Adapter.FilterHostFoodAdapter;
 import com.example.amankumar.layouttest.Model.AccommodationModel;
 import com.example.amankumar.layouttest.Model.FoodModel;
 import com.example.amankumar.layouttest.R;
@@ -27,16 +30,24 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class GuestSearchActivity extends AppCompatActivity {
     String location, facility;
     Toolbar toolbar;
     Firebase ref, accommodationRef, foodRef;
     Query query;
     ActiveHostFoodAdapter foodAdapter;
+    FilterHostFoodAdapter filterHostFoodAdapter;
     ActiveHostAccommodationAdapter accommodationAdapter;
     ListView searchList;
     EditText searchEdit;
     TextView sorryText, naText;
+    String[] foodType;
+    String foodTypeSelected;
+    int foodTypePosition;
+    Boolean filter;
+    ArrayList<FoodModel> filterFoodModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +56,13 @@ public class GuestSearchActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Guest");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         init();
-        facilityInit(location);
+        facilityInit();
     }
 
-    private void facilityInit(String location) {
+    private void facilityInit() {
         if (facility.equals(Constants.HOSTMODEL_FOOD)) {
             foodRef = new Firebase(Constants.FIREBASE_HOSTS_FOOD_URL);
             query = foodRef.orderByChild("userCity").equalTo(location);
@@ -70,19 +83,57 @@ public class GuestSearchActivity extends AppCompatActivity {
 
                 }
             });
-            foodAdapter = new ActiveHostFoodAdapter(this, FoodModel.class, R.layout.food_list_view, query);
-            searchList.setAdapter(foodAdapter);
-            searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String listId = foodAdapter.getRef(position).getKey();
-                    FoodModel foodModel=foodAdapter.getItem(position);
-                    Intent intent = new Intent(GuestSearchActivity.this, SelectedHostActivity.class);
-                    intent.putExtra("listId", listId);
-                    intent.putExtra("name",foodModel.getUserName());
-                    startActivity(intent);
-                }
-            });
+            if (filter) {
+                ref = new Firebase(Constants.FIREBASE_URL).child("FILTER_FOOD");
+                query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot child : dataSnapshot.getChildren()) {
+                            FoodModel foodModel = child.getValue(FoodModel.class);
+                            String type = foodModel.getFoodType();
+                            if (type.equalsIgnoreCase(foodTypeSelected)) {
+                                String listId = child.getKey();
+                                ref.child(listId).setValue(foodModel);
+                            }
+                        }
+                        filterHostFoodAdapter = new FilterHostFoodAdapter(GuestSearchActivity.this, FoodModel.class, R.layout.food_list_view, ref);
+                        searchList.setAdapter(filterHostFoodAdapter);
+                        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                String listId = filterHostFoodAdapter.getRef(position).getKey();
+                                FoodModel foodModel = foodAdapter.getItem(position);
+                                Intent intent = new Intent(GuestSearchActivity.this, SelectedHostActivity.class);
+                                intent.putExtra("listId", listId);
+                                intent.putExtra("name", foodModel.getUserName());
+                                startActivity(intent);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
+            } else {
+                foodAdapter = new ActiveHostFoodAdapter(this, FoodModel.class, R.layout.food_list_view, query);
+                searchList.setAdapter(foodAdapter);
+                searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String listId = foodAdapter.getRef(position).getKey();
+                        FoodModel foodModel = foodAdapter.getItem(position);
+                        Intent intent = new Intent(GuestSearchActivity.this, SelectedHostActivity.class);
+                        intent.putExtra("listId", listId);
+                        intent.putExtra("name", foodModel.getUserName());
+                        startActivity(intent);
+                    }
+                });
+            }
+
         } else if (facility.equals(Constants.HOSTMODEL_ACCOMMODATION)) {
             accommodationRef = new Firebase(Constants.FIREBASE_HOSTS_ACCOMODATION_URL);
             query = accommodationRef.orderByChild("userCity").equalTo(location);
@@ -109,10 +160,10 @@ public class GuestSearchActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String listId = accommodationAdapter.getRef(position).getKey();
-                    AccommodationModel model=accommodationAdapter.getItem(position);
+                    AccommodationModel model = accommodationAdapter.getItem(position);
                     Intent intent = new Intent(GuestSearchActivity.this, SelectedHostActivity.class);
                     intent.putExtra("listId", listId);
-                    intent.putExtra("name",model.getUserName());
+                    intent.putExtra("name", model.getUserName());
                     startActivity(intent);
                 }
             });
@@ -120,6 +171,10 @@ public class GuestSearchActivity extends AppCompatActivity {
     }
 
     private void init() {
+        foodTypePosition = 0;
+        foodTypeSelected = "None";
+        filter = false;
+        filterFoodModels = new ArrayList<>();
         searchList = (ListView) findViewById(R.id.searchListView);
         searchEdit = (EditText) findViewById(R.id.GS_searchEdit);
         sorryText = (TextView) findViewById(R.id.GS_sorry);
@@ -135,7 +190,8 @@ public class GuestSearchActivity extends AppCompatActivity {
                     String newLocation = String.valueOf(searchEdit.getText()).toLowerCase();
                     if (newLocation.equals(""))
                         return false;
-                    facilityInit(newLocation);
+                    location = newLocation;
+                    facilityInit();
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
@@ -173,5 +229,44 @@ public class GuestSearchActivity extends AppCompatActivity {
             foodAdapter.cleanup();
         if (accommodationAdapter != null)
             accommodationAdapter.cleanup();
+    }
+
+    public void filterButtonHandler(View view) {
+        foodType = getResources().getStringArray(R.array.food_type);
+        if (facility.equals(Constants.HOSTMODEL_FOOD)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Choose Food Type");
+            builder.setSingleChoiceItems(R.array.food_type, foodTypePosition, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    foodTypeSelected = foodType[which];
+                    foodTypePosition = which;
+                }
+            });
+            builder.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ref = new Firebase(Constants.FIREBASE_URL).child("FILTER_FOOD");
+                    ref.setValue(null);
+                    if (foodTypeSelected.equals(foodType[0])) {
+                        filter = false;
+                        facilityInit();
+                    } else {
+                        filter = true;
+                        facilityInit();
+                    }
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        } else {
+
+        }
     }
 }

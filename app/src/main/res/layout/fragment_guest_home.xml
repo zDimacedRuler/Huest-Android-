@@ -1,13 +1,101 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.amankumar.layouttest.UI.GUEST.GuestHomeFragment">
-
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorBackground"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:text="Enter the location you want to search:"
+                    android:textColor="@color/light_black" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/location_EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Location"
+                    android:imeOptions="actionDone"
+                    android:inputType="textAutoCorrect"
+                    android:padding="14dp"
+                    android:popupBackground="@color/colorBackground"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="15.3sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginTop="20dp"
+                    android:text="What are you looking for:"
+                    android:textColor="@color/light_black" />
+
+                <RadioGroup
+                    android:id="@+id/Select_facility_guest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorBackground"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/Food_GuestRadio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:padding="10dp"
+                        android:text="Food"
+                        android:textSize="15.3sp" />
+
+                    <RadioButton
+                        android:id="@+id/Acco_GuestRadio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:text="Accommodation"
+                        android:textSize="15.3sp" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/searchHostButton"
+                    style="@style/MyButtonPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginTop="40dp"
+                    android:text="SEARCH" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

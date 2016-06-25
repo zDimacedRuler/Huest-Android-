@@ -1,6 +1,5 @@
 package com.example.amankumar.layouttest.UI.HOST;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +9,7 @@ import android.view.MenuItem;
 
 import com.example.amankumar.layouttest.R;
 
-public class HostFacilityActivity extends AppCompatActivity  implements HostUpdateFacility.OnFragmentHostFacilityListener{
+public class HostFacilityActivity extends AppCompatActivity{
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +44,5 @@ public class HostFacilityActivity extends AppCompatActivity  implements HostUpda
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onFragmentHostFacility(Uri uri) {
-
     }
 }

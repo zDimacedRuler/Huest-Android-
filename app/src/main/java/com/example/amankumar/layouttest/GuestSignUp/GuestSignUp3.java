@@ -13,7 +13,7 @@ import com.example.amankumar.layouttest.R;
 
 
 public class GuestSignUp3 extends Fragment {
-    EditText stateEdit, addressEdit, pinCodeEdit,cityEdit;
+    EditText stateEdit, addressEdit, pinCodeEdit, cityEdit;
     Button registerButton;
     private OnFragmentInteractionListener mListener;
 
@@ -37,9 +37,9 @@ public class GuestSignUp3 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_guest_sign_up3, container, false);
         addressEdit = (EditText) view.findViewById(R.id.address_GuestEditText);
         pinCodeEdit = (EditText) view.findViewById(R.id.pinCode_GuestEditText);
-        stateEdit= (EditText) view.findViewById(R.id.state_GuestEditText);
-        cityEdit= (EditText) view.findViewById(R.id.city_GuestEditText);
-        registerButton= (Button) view.findViewById(R.id.guestSignUp3NextButton);
+        stateEdit = (EditText) view.findViewById(R.id.state_GuestEditText);
+        cityEdit = (EditText) view.findViewById(R.id.city_GuestEditText);
+        registerButton = (Button) view.findViewById(R.id.guestSignUp3NextButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +54,7 @@ public class GuestSignUp3 extends Fragment {
                 if (!validState || !validAddress || !validPinCode || !validCity)
                     return;
                 if (mListener != null) {
-                    mListener.onFragmentInteraction2(address, pinCode, state,city);
+                    mListener.onFragmentInteraction2(address, pinCode, state, city);
                 }
             }
         });
@@ -62,16 +62,16 @@ public class GuestSignUp3 extends Fragment {
     }
 
     private boolean isValidCity(String city) {
-        if (city.equals("")) {
-            cityEdit.setError("Cannot be empty");
+        if (!city.matches( "([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+)" )) {
+            cityEdit.setError("Invalid City");
             return false;
         }
         return true;
     }
 
     private boolean isValidState(String state) {
-        if (state.equals("")) {
-            stateEdit.setError("Cannot be empty");
+        if (!state.matches("([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+)" )) {
+            stateEdit.setError("Invalid State");
             return false;
         }
         return true;
@@ -79,7 +79,7 @@ public class GuestSignUp3 extends Fragment {
 
     private boolean isValidAddress(String address) {
         if (address.equals("")) {
-            addressEdit.setError("Cannot be empty");
+            addressEdit.setError("Invalid Address");
             return false;
         }
         return true;
@@ -87,12 +87,13 @@ public class GuestSignUp3 extends Fragment {
     }
 
     private boolean isValidPinCode(String pinCode) {
-        if (pinCode.equals("")||pinCode.length()<6) {
-            pinCodeEdit.setError("Cannot be empty");
+        if (!pinCode.matches("\\d{6}")) {
+            pinCodeEdit.setError("Invalid PinCode");
             return false;
         }
         return true;
     }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -111,7 +112,7 @@ public class GuestSignUp3 extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction2(String address,String pinCode,String state,String city);
+        void onFragmentInteraction2(String address, String pinCode, String state, String city);
     }
 
 }

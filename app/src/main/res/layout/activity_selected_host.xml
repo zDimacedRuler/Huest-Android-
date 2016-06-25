@@ -320,7 +320,7 @@
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
         android:onClick="chatButtonHandler"
-        android:src="@drawable/fab_plus"
+        android:src="@drawable/ic_chat_white_24dp"
         app:elevation="6dp"
         app:fabSize="normal"
         app:pressedTranslationZ="12dp" />

@@ -2,7 +2,13 @@
 <resources>
     <string-array name="occupation_array">
         <item>Student</item>
-        <item>Professional</item>
+        <item>Working</item>
+        <item>Tourist</item>
         <item>Others</item>
+    </string-array>
+    <string-array name="food_type">
+        <item>None</item>
+        <item>veg</item>
+        <item>non-veg</item>
     </string-array>
 </resources>

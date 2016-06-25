@@ -73,23 +73,23 @@ public class HostSignUp1 extends Fragment {
 
     private boolean isValidPassword(String password) {
         if (password.length() < 6) {
-            passwordEdit.setError("Password should not be empty and have length greater than 6");
+            passwordEdit.setError("Password length should be greater than 6");
             return false;
         }
         return true;
     }
 
     private boolean isValidFirstName(String firstName) {
-        if (firstName.equals("")) {
-            firstEdit.setError("Cannot be empty");
+        if (!firstName.matches( "[A-Z][a-zA-Z]*" ) || firstName.length()<4) {
+            firstEdit.setError("Incorrect First Name");
             return false;
         }
         return true;
     }
 
     private boolean isValidLastName(String lastName) {
-        if (lastName.equals("")) {
-            lastEdit.setError("Cannot be empty");
+        if (!lastName.matches("[A-Z][a-zA-Z]*") || lastName.length()<4) {
+            lastEdit.setError("Incorrect Last Name");
             return false;
         }
         return true;

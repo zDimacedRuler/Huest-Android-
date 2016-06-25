@@ -13,6 +13,7 @@
         android:id="@+id/CA_list_view"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
+        android:background="@color/colorBackground"
         android:layout_marginRight="10dp"
         android:layout_height="wrap_content"/>
 </LinearLayout>

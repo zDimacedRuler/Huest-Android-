@@ -93,23 +93,23 @@ public class GuestSignUp2 extends Fragment {
         return view;
     }
     private boolean isValidMobile(String mobile) {
-        if (mobile.equals("")||mobile.length()<10) {
-            mobileEdit.setError("Cannot be empty");
+        if (!mobile.matches("^(\\+\\d{1,3}[- ]?)?\\d{10}$")) {
+            mobileEdit.setError("Incorrect Mobile Number");
             return false;
         }
         return true;
     }
     private boolean isValidLastName(String lastName) {
-        if (lastName.equals("")) {
-            lastNameEdit.setError("Cannot be empty");
+        if (!lastName.matches("[A-Z][a-zA-Z]*") || lastName.length()<4) {
+            lastNameEdit.setError("Incorrect Last Name");
             return false;
         }
         return true;
     }
 
     private boolean isValidFirstName(String firstName) {
-        if (firstName.equals("")) {
-            firstNameEdit.setError("Cannot be empty");
+        if (!firstName.matches( "[A-Z][a-zA-Z]*" ) || firstName.length()<4) {
+            firstNameEdit.setError("Incorrect First Name");
             return false;
         }
         return true;

@@ -16,11 +16,6 @@ import com.example.amankumar.layouttest.R;
 public class GuestSignUp1 extends Fragment implements View.OnClickListener {
     EditText emailEdit, passwordEdit;
     Button nextButton;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentInteractionListener mListener;
 
     public static GuestSignUp1 newInstance() {
@@ -59,7 +54,7 @@ public class GuestSignUp1 extends Fragment implements View.OnClickListener {
 
     private boolean isValidPassword(String password) {
         if (password.length()<6) {
-            passwordEdit.setError("Password should not be empty and have length greater than 6");
+            passwordEdit.setError("Password length should be greater than 6");
             return false;
         }
         return true;

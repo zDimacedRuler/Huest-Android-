@@ -1,11 +1,11 @@
 package com.example.amankumar.layouttest.UI.HOST;
 
-import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +35,7 @@ public class HostUpdateFacility extends Fragment {
     ViewGroup foodRoot, accoRoot;
     View foodFacility, accoFacility;
     Button registerButton;
-    String encodedEmail, userType, userName,userCity;
+    String encodedEmail, userType, userName, userCity;
     //Accommodation Facility
     CheckBox singleAccoCheck, sharingAccoCheck, trialAccoCheck;
     EditText singleRateEdit, sharingRateEdit, trialRateEdit, accoLimitEdit, accoDescEdit;
@@ -50,7 +50,6 @@ public class HostUpdateFacility extends Fragment {
 
     SharedPreferences sp;
     SharedPreferences.Editor spe;
-    private OnFragmentHostFacilityListener mListener;
 
     public static HostUpdateFacility newInstance() {
         HostUpdateFacility fragment = new HostUpdateFacility();
@@ -72,7 +71,7 @@ public class HostUpdateFacility extends Fragment {
         view = inflater.inflate(R.layout.fragment_host_update_facility, container, false);
         init(view, inflater);
         userName = sp.getString(Constants.CURRENT_USER_NAME, "");
-        userCity=sp.getString(Constants.CURRENT_USER_PLACE,"");
+        userCity = sp.getString(Constants.CURRENT_USER_PLACE, "");
         hostRef = ref.child(Constants.LOCATION_HOSTS).child(encodedEmail);
         hostRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -116,21 +115,21 @@ public class HostUpdateFacility extends Fragment {
                     hostAccoRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            AccommodationModel accommodationModel =dataSnapshot.getValue(AccommodationModel.class);
-                            String single= accommodationModel.getSingle();
-                            String sharing= accommodationModel.getSharing();
-                            String trial= accommodationModel.getTrial();
-                            String limit= accommodationModel.getLimits();
-                            String desc= accommodationModel.getDescriptionOfPlace();
-                            if(!single.equals("n/a")){
+                            AccommodationModel accommodationModel = dataSnapshot.getValue(AccommodationModel.class);
+                            String single = accommodationModel.getSingle();
+                            String sharing = accommodationModel.getSharing();
+                            String trial = accommodationModel.getTrial();
+                            String limit = accommodationModel.getLimits();
+                            String desc = accommodationModel.getDescriptionOfPlace();
+                            if (!single.equals("n/a")) {
                                 singleAccoCheck.setChecked(true);
                                 singleRateEdit.setText(single);
                             }
-                            if(!sharing.equals("n/a")){
+                            if (!sharing.equals("n/a")) {
                                 sharingAccoCheck.setChecked(true);
                                 sharingRateEdit.setText(sharing);
                             }
-                            if(!trial.equals("n/a")){
+                            if (!trial.equals("n/a")) {
                                 trialAccoCheck.setChecked(true);
                                 trialRateEdit.setText(trial);
                             }
@@ -180,56 +179,173 @@ public class HostUpdateFacility extends Fragment {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(getActivity(), "Through", Toast.LENGTH_SHORT).show();
-                if (food) {
-                    foodLimit = String.valueOf(foodLimitEdit.getText());
-                    foodDesc = String.valueOf(foodDescEdit.getText());
-                    dayRate = String.valueOf(dayRateEdit.getText());
-                    weekRate = String.valueOf(weekRateEdit.getText());
-                    monthRate = String.valueOf(monthRateEdit.getText());
-                    FoodModel model = new FoodModel(userName,userCity, foodType, foodLimit, foodDesc, dayRate, monthRate, weekRate);
-                    hostFoodRef = ref.child(Constants.LOCATION_HOST_FOOD).child(encodedEmail);
-                    hostFoodRef.setValue(model);
-                    hostModelFoodRef = new Firebase(Constants.FIREBASE_HOSTS_URL).child(encodedEmail).child(Constants.HOSTMODEL_FOOD);
-                    hostModelFoodRef.setValue("true");
-                }
-                if (accommodation) {
-                    if (singleAccoCheck.isChecked())
-                        singleRate = String.valueOf(singleRateEdit.getText());
-                    else
-                        singleRate = "n/a";
-                    if (sharingAccoCheck.isChecked())
-                        sharingRate = String.valueOf(sharingRateEdit.getText());
-                    else
-                        sharingRate = "n/a";
-                    if (trialAccoCheck.isChecked())
-                        trialRate = String.valueOf(trialRateEdit.getText());
-                    else
-                        trialRate = "n/a";
-                    accoLimit = String.valueOf(accoLimitEdit.getText());
-                    accoDesc = String.valueOf(accoDescEdit.getText());
-                    hostAccoRef = ref.child(Constants.LOCATION_HOST_ACCOMMODATION).child(encodedEmail);
-                    AccommodationModel model = new AccommodationModel(userName,userCity, accoDesc, accoLimit, sharingRate, singleRate, trialRate);
-                    hostAccoRef.setValue(model);
-                    hostModelAccoRef = new Firebase(Constants.FIREBASE_HOSTS_URL).child(encodedEmail).child(Constants.HOSTMODEL_ACCOMMODATION);
-                    hostModelAccoRef.setValue("true");
-                }
-                if (!food) {
-                    hostModelFoodRef = new Firebase(Constants.FIREBASE_HOSTS_URL).child(encodedEmail).child(Constants.HOSTMODEL_FOOD);
-                    hostModelFoodRef.setValue("false");
-                    hostFoodRef = ref.child(Constants.LOCATION_HOST_FOOD).child(encodedEmail);
-                    hostFoodRef.setValue(null);
-                }
-                if (!accommodation) {
-                    hostModelAccoRef = new Firebase(Constants.FIREBASE_HOSTS_URL).child(encodedEmail).child(Constants.HOSTMODEL_ACCOMMODATION);
-                    hostModelAccoRef.setValue("false");
-                    hostAccoRef = ref.child(Constants.LOCATION_HOST_ACCOMMODATION).child(encodedEmail);
-                    hostAccoRef.setValue(null);
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Confirm changes?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        updateFacility();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         return view;
+    }
+
+    public void updateFacility() {
+        if (food) {
+            foodLimit = String.valueOf(foodLimitEdit.getText());
+            foodDesc = String.valueOf(foodDescEdit.getText());
+            dayRate = String.valueOf(dayRateEdit.getText());
+            weekRate = String.valueOf(weekRateEdit.getText());
+            monthRate = String.valueOf(monthRateEdit.getText());
+            boolean validFoodlimit = isValidFoodLimit(foodLimit);
+            boolean validFoodDesc = isValidFoodDesc(foodDesc);
+            boolean validDayRate = isValidDayRate(dayRate);
+            boolean validWeekRate = isValidWeekRate(weekRate);
+            boolean validMonthRate = isValidMonthRate(monthRate);
+            if (!validFoodlimit || !validFoodDesc || !validDayRate || !validWeekRate || !validMonthRate)
+                return;
+            FoodModel model = new FoodModel(userName, userCity, foodType, foodLimit, foodDesc, dayRate, monthRate, weekRate);
+            hostFoodRef = ref.child(Constants.LOCATION_HOST_FOOD).child(encodedEmail);
+            hostFoodRef.setValue(model);
+            hostModelFoodRef = new Firebase(Constants.FIREBASE_HOSTS_URL).child(encodedEmail).child(Constants.HOSTMODEL_FOOD);
+            hostModelFoodRef.setValue("true");
+        }
+        if (accommodation) {
+            if (singleAccoCheck.isChecked())
+                singleRate = String.valueOf(singleRateEdit.getText());
+            else
+                singleRate = "n/a";
+            if (sharingAccoCheck.isChecked())
+                sharingRate = String.valueOf(sharingRateEdit.getText());
+            else
+                sharingRate = "n/a";
+            if (trialAccoCheck.isChecked())
+                trialRate = String.valueOf(trialRateEdit.getText());
+            else
+                trialRate = "n/a";
+            accoLimit = String.valueOf(accoLimitEdit.getText());
+            accoDesc = String.valueOf(accoDescEdit.getText());
+            boolean validSingleRate = isValidSingleRate(singleRate);
+            boolean validSharingRate = isValidSharingRate(sharingRate);
+            boolean validTrialRate = isValidTrialRate(trialRate);
+            boolean validAccoLimit = isValidAccoLimit(accoLimit);
+            boolean validAccoDesc = isValidAccoDesc(accoDesc);
+            if (!singleAccoCheck.isChecked() && !sharingAccoCheck.isChecked() && !trialAccoCheck.isChecked()) {
+                Toast.makeText(getActivity(), "No Rate Provided", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (!validSingleRate || !validSharingRate || !validTrialRate || !validAccoLimit || !validAccoDesc) {
+                Toast.makeText(getActivity(), "Return", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            hostAccoRef = ref.child(Constants.LOCATION_HOST_ACCOMMODATION).child(encodedEmail);
+            AccommodationModel model = new AccommodationModel(userName, userCity, accoDesc, accoLimit, sharingRate, singleRate, trialRate);
+            hostAccoRef.setValue(model);
+            hostModelAccoRef = new Firebase(Constants.FIREBASE_HOSTS_URL).child(encodedEmail).child(Constants.HOSTMODEL_ACCOMMODATION);
+            hostModelAccoRef.setValue("true");
+        }
+        if (!food) {
+            hostModelFoodRef = new Firebase(Constants.FIREBASE_HOSTS_URL).child(encodedEmail).child(Constants.HOSTMODEL_FOOD);
+            hostModelFoodRef.setValue("false");
+            hostFoodRef = ref.child(Constants.LOCATION_HOST_FOOD).child(encodedEmail);
+            hostFoodRef.setValue(null);
+        }
+        if (!accommodation) {
+            hostModelAccoRef = new Firebase(Constants.FIREBASE_HOSTS_URL).child(encodedEmail).child(Constants.HOSTMODEL_ACCOMMODATION);
+            hostModelAccoRef.setValue("false");
+            hostAccoRef = ref.child(Constants.LOCATION_HOST_ACCOMMODATION).child(encodedEmail);
+            hostAccoRef.setValue(null);
+        }
+    }
+
+    private boolean isValidAccoDesc(String accoDesc) {
+        if (accoDesc.equals("")) {
+            accoDescEdit.setError("Cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidAccoLimit(String accoLimit) {
+        if (accoLimit.equals("")) {
+            accoLimitEdit.setError("Cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidTrialRate(String trialRate) {
+        if (trialRate.equals("")) {
+            trialRateEdit.setError("Cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidSharingRate(String sharingRate) {
+        if (sharingRate.equals("")) {
+            sharingRateEdit.setError("Cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidSingleRate(String singleRate) {
+        if (singleRate.equals("")) {
+            singleRateEdit.setError("Cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidMonthRate(String monthRate) {
+        if (monthRate.equals("")) {
+            monthRateEdit.setError("Cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidWeekRate(String weekRate) {
+        if (weekRate.equals("")) {
+            weekRateEdit.setError("Cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidDayRate(String dayRate) {
+        if (dayRate.equals("")) {
+            dayRateEdit.setError("Cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidFoodDesc(String foodDesc) {
+        if (foodDesc.equals("")) {
+            foodDescEdit.setError("Invalid Description");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isValidFoodLimit(String foodLimit) {
+        if (foodLimit.equals("")) {
+            foodLimitEdit.setError("Invalid Limit");
+            return false;
+        }
+        return true;
     }
 
     private void init(View view, LayoutInflater inflater) {
@@ -304,34 +420,5 @@ public class HostUpdateFacility extends Fragment {
                     trialRateEdit.setVisibility(View.GONE);
             }
         });
-
     }
-
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentHostFacility(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentHostFacilityListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentHostFacilityListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnFragmentHostFacilityListener {
-        void onFragmentHostFacility(Uri uri);
-    }
-
 }
